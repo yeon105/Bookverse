@@ -48,15 +48,12 @@ export default function FindByPassword() {
 
     setLoading(true);
     try {
-      const response = await axios.post(
-        "http://localhost:8080/api/user/find/pw",
-        {
-          email: email,
-          name: name,
-          birthdate: dob,
-          phone: phone,
-        }
-      );
+      const response = await axios.post("/api/user/find/pw", {
+        email: email,
+        name: name,
+        birthdate: dob,
+        phone: phone,
+      });
       const temporaryPassword = response.data; // 서버에서 임시 비밀번호 받기
       alert(
         `임시 비밀번호는 ${temporaryPassword}입니다. 로그인 후 변경해주세요.`

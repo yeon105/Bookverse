@@ -22,7 +22,7 @@ export default function BookList() {
           : `/api/book/all?page=${currentPage - 1}&size=10`;
 
       try {
-        const response = await axios.get(`http://localhost:8080${endpoint}`);
+        const response = await axios.get(`${endpoint}`);
         setBooks(response.data.content);
         setTotalPages(response.data.totalPages);
       } catch (error) {

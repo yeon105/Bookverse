@@ -19,12 +19,9 @@ function BookSearch() {
   const fetchBooks = async (query) => {
     setLoading(true);
     try {
-      const response = await axios.get(
-        `http://localhost:8080/api/book/search`,
-        {
-          params: { query: query },
-        }
-      );
+      const response = await axios.get(`/api/book/search`, {
+        params: { query: query },
+      });
       setBooks(response.data);
     } catch (error) {
       console.error("Failed to fetch books:", error);

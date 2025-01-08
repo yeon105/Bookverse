@@ -79,7 +79,7 @@ export default function RegisterForm() {
 
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/user/check/id?email=${fullEmail}`,
+        `/api/user/check/id?email=${fullEmail}`,
         { withCredentials: true }
       );
       if (response.data) {
@@ -176,7 +176,7 @@ export default function RegisterForm() {
 
     setLoading(true);
     try {
-      await axios.post(`http://localhost:8080/api/user/join`, joinData, {
+      await axios.post(`/api/user/join`, joinData, {
         withCredentials: true,
       });
       alert("회원가입 성공");

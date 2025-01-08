@@ -41,14 +41,11 @@ export default function FindById() {
 
     setLoading(true); // 로딩 시작
     try {
-      const response = await axios.post(
-        "http://localhost:8080/api/user/find/id",
-        {
-          name: name,
-          birthdate: dob, // 서버에서 'birthdate'로 매핑된 필드 이름 확인
-          phone: phone,
-        }
-      );
+      const response = await axios.post("/api/user/find/id", {
+        name: name,
+        birthdate: dob, // 서버에서 'birthdate'로 매핑된 필드 이름 확인
+        phone: phone,
+      });
       const userId = response.data; // 서버에서 직접 반환한 아이디
       alert(`당신의 아이디는 ${userId}입니다`);
       navigate("/login", { state: { userId } });

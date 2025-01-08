@@ -12,7 +12,7 @@ function CategoryBooks({ category }) {
         // 카테고리 값을 URL 인코딩
         const encodedCategory = encodeURIComponent(category);
         const response = await axios.get(
-          `http://localhost:8080/api/purchase/top/category?category=${encodedCategory}`,
+          `/api/purchase/top/category?category=${encodedCategory}`,
           { withCredentials: true }
         );
         setBooks(response.data);

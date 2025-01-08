@@ -35,10 +35,9 @@ export default function HomePage() {
   // 인기 도서 데이터 fetch
   const fetchData = useCallback(async () => {
     try {
-      const popularResponse = await axios.get(
-        "http://localhost:8080/api/purchase/top/all",
-        { withCredentials: true }
-      );
+      const popularResponse = await axios.get("/api/purchase/top/all", {
+        withCredentials: true,
+      });
       setPopularBooks(popularResponse.data);
     } catch (error) {
       console.error("Error fetching popular books:", error);
