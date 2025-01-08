@@ -57,7 +57,7 @@ export default function LoginForm() {
 
       //   // Redux에 사용자 정보 저장
       //   await dispatch(setUserInfo(userInfoResponse.data));
-      }
+      // }
 
       // 홈 페이지로 이동
       navigate("/");
