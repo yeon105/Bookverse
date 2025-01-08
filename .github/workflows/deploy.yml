@@ -35,8 +35,8 @@ jobs:
           key: ${{ secrets.EC2_PRIVATE_KEY }}
           script_stop: true # 이전에 실행중인 컨테이너 중지
           script: |
-            docker stop ${{ env.REPOSITORY_NAME }} || true
-            docker rm ${{ env.REPOSITORY_NAME }} || true
+            docker stop bookversebackend || true
+            docker rm bookversebackend || true
             docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/bookversebackend:latest || true
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/bookversebackend:latest
             docker run -d --name bookversebackend -p 8080:8080 --add-host=host.docker.internal:172.17.0.1 ${{ secrets.DOCKERHUB_USERNAME }}/bookversebackend:latest
