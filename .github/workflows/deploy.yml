@@ -22,10 +22,10 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Docker 이미지 생성
-        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.REPOSITORY_NAME }} .
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/bookversebackend .
 
       - name: Docker Hub에 Docker 이미지 Push하기
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.REPOSITORY_NAME }}:latest
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/bookversebackend:latest
 
       - name: SSH로 EC2에 접속하기
         uses: appleboy/ssh-action@v1.0.3
@@ -37,6 +37,6 @@ jobs:
           script: |
             docker stop ${{ env.REPOSITORY_NAME }} || true
             docker rm ${{ env.REPOSITORY_NAME }} || true
-            docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.REPOSITORY_NAME }}:latest || true
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.REPOSITORY_NAME }}:latest
-            docker run -d --name ${{ env.REPOSITORY_NAME }} -p 8080:8080 --add-host=host.docker.internal:172.17.0.1 ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.REPOSITORY_NAME }}:latest
+            docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/bookversebackend:latest || true
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/bookversebackend:latest
+            docker run -d --name bookversebackend -p 8080:8080 --add-host=host.docker.internal:172.17.0.1 ${{ secrets.DOCKERHUB_USERNAME }}/bookversebackend:latest
