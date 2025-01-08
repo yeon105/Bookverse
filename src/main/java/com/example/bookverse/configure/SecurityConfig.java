@@ -5,7 +5,6 @@ import com.example.bookverse.component.CustomAuthenticationEntryPoint;
 import com.example.bookverse.jwt.JwtFilter;
 import com.example.bookverse.jwt.JwtUtil;
 import com.example.bookverse.jwt.LoginFilter;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
