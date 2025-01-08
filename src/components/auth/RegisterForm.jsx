@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/RegisterForm.module.css";
 import axios from "axios";
+import apiClient from "../../api/axiosInstance";
 
 export default function RegisterForm() {
   const [emailName, setEmailName] = useState("");
@@ -79,7 +80,7 @@ export default function RegisterForm() {
 
     try {
       const response = await axios.get(
-        `/api/user/check/id?email=${fullEmail}`,
+        `http://13.124.100.87:8080/api/user/check/id?email=${fullEmail}`,
         { withCredentials: true }
       );
       if (response.data) {
@@ -176,7 +177,7 @@ export default function RegisterForm() {
 
     setLoading(true);
     try {
-      await axios.post(`/api/user/join`, joinData, {
+      await axios.post(`http://13.124.100.87:8080/api/user/join`, joinData, {
         withCredentials: true,
       });
       alert("회원가입 성공");
