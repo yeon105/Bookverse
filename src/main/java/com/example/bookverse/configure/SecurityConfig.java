@@ -83,7 +83,7 @@ public class SecurityConfig {
 
         http.cors(cors -> cors.configurationSource(request -> {
             CorsConfiguration config = new CorsConfiguration();
-            config.setAllowedOrigins(List.of("http://localhost:3000", "http://13.124.100.87"));
+            config.setAllowedOrigins(List.of("http://localhost:3000", "http://13.124.100.87:3000"));
             config.addAllowedMethod("*");
             config.addAllowedHeader("*");
             config.setAllowCredentials(true);
