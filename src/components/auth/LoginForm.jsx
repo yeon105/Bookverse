@@ -47,10 +47,13 @@ export default function LoginForm() {
 
       // 사용자 정보 요청
       if (role === "ROLE_USER") {
-        const userInfoResponse = await apiClient.get("/api/user/userinfo", {
-          params: { email },
-          withCredentials: true,
-        });
+        const userInfoResponse = await axios.get(
+          "http://13.124.100.87:8080/api/user/userinfo",
+          {
+            params: { email },
+            withCredentials: true,
+          }
+        );
 
         // Redux에 사용자 정보 저장
         await dispatch(setUserInfo(userInfoResponse.data));
