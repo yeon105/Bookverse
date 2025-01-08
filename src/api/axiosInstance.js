@@ -3,7 +3,7 @@ import store from "../redux/store";
 import { clearUserInfo, saveJwtToken } from "../redux/userInfoSlice";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "http://13.124.100.87",
   headers: {
     "Content-Type": "application/json",
   },
