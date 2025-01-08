@@ -9,6 +9,7 @@ import { addItem } from "../../redux/cartSlice"; // Import the addItem action
 import { selectIsInWishlist } from "../../redux/selectors";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import Review from "../common/Review";
+import axios from "axios";
 
 export default function BookDetail() {
   const { id } = useParams();
@@ -28,7 +29,9 @@ export default function BookDetail() {
   useEffect(() => {
     const fetchBookDetails = async () => {
       try {
-        const response = await apiClient.get(`/api/book/bookdetail/${id}`);
+        const response = await axios.get(
+          `http://13.124.100.87:3000/api/book/bookdetail/${id}`
+        );
         setBook(response.data);
       } catch (error) {
         errorDisplay(error);
