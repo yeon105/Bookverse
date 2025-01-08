@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { saveJwtToken, setRole, setUserInfo } from "../../redux/userInfoSlice";
 import apiClient from "../../api/axiosInstance";
 import errorDisplay from "../../api/errorDisplay";
+import axios from "axios";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -28,9 +29,13 @@ export default function LoginForm() {
 
     try {
       // 로그인 요청
-      const response = await apiClient.post("/api/user/login", params, {
-        withCredentials: true,
-      });
+      const response = await axios.post(
+        "http://13.124.100.87:8080/api/user/login",
+        params,
+        {
+          withCredentials: true,
+        }
+      );
 
       // JWT 토큰 추출
       const token = response.headers["authorization"]?.split(" ")[1];
