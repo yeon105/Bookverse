@@ -4,7 +4,7 @@ WORKDIR /app
 
 # package.json과 package-lock.json 복사
 COPY package.json package-lock.json ./
-RUN npm install
+RUN npm install --force
 
 # 소스 파일 복사 및 빌드
 COPY . /app
